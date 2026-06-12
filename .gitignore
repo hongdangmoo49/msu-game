@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.agents/
+.codex/
+.trinity/
+.env
+.env.*
+*.log
+coverage/
+.vite/
+.DS_Store

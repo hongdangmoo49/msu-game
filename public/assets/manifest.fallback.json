@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-12T00:00:00.000Z",
+  "source": "fallback",
+  "characters": [
+    {
+      "id": "character-fallback-hero",
+      "kind": "character",
+      "assetKey": "fallback-character-hero",
+      "name": "Fallback Hero",
+      "job": "Explorer",
+      "level": 200,
+      "image": {
+        "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230f172a'/%3E%3Ccircle%20cx='32'%20cy='24'%20r='12'%20fill='%2338bdf8'/%3E%3Cpath%20d='M16%2056c3-13%2012-20%2016-20s13%207%2016%2020'%20fill='%23f8fafc'/%3E%3C/svg%3E",
+        "sourceField": "fallbackDataUrl",
+        "kind": "inline",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "fallback",
+        "assetKey": "fallback-character-hero",
+        "name": "Fallback Hero",
+        "job": "Explorer",
+        "level": 200,
+        "attackPower": "1200000",
+        "unknownFieldsPreserved": {
+          "note": "Fallback character keeps raw source data."
+        }
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill-arcane-bolt",
+      "kind": "skill",
+      "skillId": "fallback-skill-arcane-bolt",
+      "name": "Arcane Bolt",
+      "description": "Fast piercing projectile for fallback play.",
+      "level": 30,
+      "image": {
+        "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%231e293b'/%3E%3Cpath%20d='M38%204L14%2036h17l-5%2024%2024-34H33z'%20fill='%23facc15'/%3E%3C/svg%3E",
+        "sourceField": "fallbackDataUrl",
+        "kind": "inline",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-arcane-bolt-icon",
+        "tint": "#facc15",
+        "speed": 540,
+        "fireRateMs": 360,
+        "damage": 14
+      },
+      "raw": {
+        "source": "fallback",
+        "skillId": "fallback-skill-arcane-bolt",
+        "name": "Arcane Bolt",
+        "nodeImageUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%231e293b'/%3E%3Cpath%20d='M38%204L14%2036h17l-5%2024%2024-34H33z'%20fill='%23facc15'/%3E%3C/svg%3E",
+        "unknownFieldsPreserved": {
+          "cooldownGroup": "fallback-primary"
+        }
+      }
+    },
+    {
+      "id": "skill-luminous-ring",
+      "kind": "skill",
+      "skillId": "fallback-skill-luminous-ring",
+      "name": "Luminous Ring",
+      "description": "Radial burst fallback skill.",
+      "level": 20,
+      "image": {
+        "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%23111827'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='20'%20fill='none'%20stroke='%2338bdf8'%20stroke-width='8'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='7'%20fill='%23f8fafc'/%3E%3C/svg%3E",
+        "sourceField": "fallbackDataUrl",
+        "kind": "inline",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-luminous-ring-icon",
+        "tint": "#38bdf8",
+        "speed": 420,
+        "fireRateMs": 760,
+        "damage": 9
+      },
+      "raw": {
+        "source": "fallback",
+        "skillId": "fallback-skill-luminous-ring",
+        "name": "Luminous Ring",
+        "nodeImageUrl": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%23111827'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='20'%20fill='none'%20stroke='%2338bdf8'%20stroke-width='8'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='7'%20fill='%23f8fafc'/%3E%3C/svg%3E",
+        "unknownFieldsPreserved": {
+          "shotPattern": "radial"
+        }
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "item-fallback-crystal",
+      "kind": "item",
+      "itemId": "fallback-item-crystal",
+      "name": "Fallback Crystal",
+      "category": "Projectile Focus",
+      "image": {
+        "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%231e1b4b'/%3E%3Cpath%20d='M32%206l18%2018-18%2034-18-34z'%20fill='%23a78bfa'/%3E%3Cpath%20d='M32%206v52l18-34z'%20fill='%23c4b5fd'/%3E%3C/svg%3E",
+        "sourceField": "fallbackDataUrl",
+        "kind": "inline",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "fallback",
+        "itemId": "fallback-item-crystal",
+        "name": "Fallback Crystal",
+        "category": {
+          "label": "Projectile Focus",
+          "code": "fallback-projectile-focus"
+        },
+        "unknownFieldsPreserved": {
+          "powerBudget": 1
+        }
+      }
+    }
+  ],
+  "icons": [
+    {
+      "id": "skill-arcane-bolt-icon",
+      "label": "Arcane Bolt",
+      "entityId": "skill-arcane-bolt",
+      "entityKind": "skill",
+      "image": {
+        "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%231e293b'/%3E%3Cpath%20d='M38%204L14%2036h17l-5%2024%2024-34H33z'%20fill='%23facc15'/%3E%3C/svg%3E",
+        "sourceField": "fallbackDataUrl",
+        "kind": "inline",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "fallback",
+        "entityId": "skill-arcane-bolt"
+      }
+    },
+    {
+      "id": "skill-luminous-ring-icon",
+      "label": "Luminous Ring",
+      "entityId": "skill-luminous-ring",
+      "entityKind": "skill",
+      "image": {
+        "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%23111827'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='20'%20fill='none'%20stroke='%2338bdf8'%20stroke-width='8'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='7'%20fill='%23f8fafc'/%3E%3C/svg%3E",
+        "sourceField": "fallbackDataUrl",
+        "kind": "inline",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "fallback",
+        "entityId": "skill-luminous-ring"
+      }
+    }
+  ],
+  "rawResponses": [
+    {
+      "id": "fallback-seed",
+      "endpointId": "fallback",
+      "path": "public/assets/manifest.fallback.json",
+      "receivedAt": "2026-06-12T00:00:00.000Z",
+      "body": {
+        "source": "fallback",
+        "note": "Offline seed data for manifest route fallback."
+      }
+    }
+  ],
+  "metadata": {
+    "title": "MSU Survival Shooter Fallback Manifest",
+    "revision": "fallback-2026-06-12",
+    "warnings": []
+  }
+}

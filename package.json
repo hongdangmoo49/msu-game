@@ -1,0 +1,29 @@
+{
+  "name": "msu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev:client",
+    "dev:client": "vite --host 127.0.0.1",
+    "dev:server": "tsx --watch server/index.ts",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild server/index.ts --bundle --platform=node --format=esm --outdir=dist/server --external:node:fs --external:node:http --external:node:path --external:node:url",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run test:security && npm run test:network && npm run test:perf",
+    "test:security": "node tests/security-static.test.mjs",
+    "test:network": "node tests/network-fallback.test.mjs",
+    "test:perf": "node tests/perf-budget.test.mjs",
+    "verify:acceptance": "npm run typecheck && npm run build && npm test",
+    "start": "node dist/server/index.js"
+  },
+  "dependencies": {
+    "phaser": "3.90.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "tsx": "4.20.3",
+    "vite": "5.4.21"
+  }
+}

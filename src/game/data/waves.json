@@ -1,0 +1,45 @@
+{
+  "waves": [
+    {
+      "wave": 1,
+      "spawnIntervalMs": 1500,
+      "enemySpeed": 70,
+      "enemyHp": 30,
+      "xpValue": 10
+    },
+    {
+      "wave": 2,
+      "spawnIntervalMs": 1350,
+      "enemySpeed": 80,
+      "enemyHp": 40,
+      "xpValue": 12
+    },
+    {
+      "wave": 3,
+      "spawnIntervalMs": 1200,
+      "enemySpeed": 90,
+      "enemyHp": 55,
+      "xpValue": 15
+    },
+    {
+      "wave": 4,
+      "spawnIntervalMs": 1100,
+      "enemySpeed": 100,
+      "enemyHp": 70,
+      "xpValue": 18
+    },
+    {
+      "wave": 5,
+      "spawnIntervalMs": 1000,
+      "enemySpeed": 115,
+      "enemyHp": 90,
+      "xpValue": 22
+    }
+  ],
+  "scalingPerExtraWave": {
+    "spawnIntervalMs": -50,
+    "enemySpeed": 5,
+    "enemyHp": 10,
+    "xpValue": 3
+  }
+}
