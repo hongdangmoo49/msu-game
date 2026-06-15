@@ -69,6 +69,23 @@ Open:
 http://localhost:3000
 ```
 
+## Verse8 Git Access
+
+This repository is prepared for a Git-based import flow if the Verse8 editor can run a Node.js web server.
+
+Recommended settings:
+
+| Field | Value |
+| --- | --- |
+| Install | `npm install` |
+| Build | `npm run build` |
+| Start | `npm start` |
+| Port | Use the platform-provided `PORT`, or `3000` locally. |
+
+The game does not require an MSU API key for the bundled Vibe Camp asset set. By default, `/api/manifest` reads `public/assets/manifest.cache.json`, and `/api/resource-image` proxies only MSU Resource Search images from `https://resource-static.msu.io/data/`.
+
+If the import target only supports static hosting, the Phaser client will boot but MSU Resource Search images may not load because the CORS-safe image proxy route will be unavailable. Use a Node server runtime for the intended experience.
+
 ## Environment
 
 All MSU credentials stay server-side.
