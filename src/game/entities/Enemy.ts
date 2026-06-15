@@ -1,6 +1,11 @@
 import Phaser from 'phaser';
 import { CONFIG } from '../config';
 
+export interface EnemySpawnOptions {
+  readonly textureKey?: string;
+  readonly displaySize?: number;
+}
+
 export class Enemy extends Phaser.Physics.Arcade.Image {
   private hp = 0;
   private speed = 0;
@@ -15,14 +20,27 @@ export class Enemy extends Phaser.Physics.Arcade.Image {
 
   /* ---------- lifecycle ---------- */
 
-  spawn(x: number, y: number, speed: number, health: number, xpValue: number): void {
+  spawn(
+    x: number,
+    y: number,
+    speed: number,
+    health: number,
+    xpValue: number,
+    options: EnemySpawnOptions = {},
+  ): void {
     this.hp = health;
     this.speed = speed;
     this.xpValue = xpValue;
 
+    const textureKey = options.textureKey ?? 'enemy';
+    const displaySize = options.displaySize ?? CONFIG.ENEMY.SIZE;
+    this.setTexture(this.scene.textures.exists(textureKey) ? textureKey : 'enemy');
+    this.setDisplaySize(displaySize, displaySize);
+
     const body = this.body as Phaser.Physics.Arcade.Body;
     body.enable = true;
     body.reset(x, y);
+    body.setCircle(displaySize / 2);
     this.setActive(true).setVisible(true);
   }
 
@@ -31,6 +49,7 @@ export class Enemy extends Phaser.Physics.Arcade.Image {
     body.setVelocity(0, 0);
     body.enable = false;
     this.setActive(false).setVisible(false);
+    this.setTexture('enemy');
   }
 
   /* ---------- per-frame ---------- */

@@ -11,6 +11,8 @@
       "baseRange": 500,
       "color": 16498468,
       "size": 6,
+      "iconTextureKey": "skill-energy-bolt",
+      "projectileTextureKey": "skill-energy-bolt",
       "upgrades": [
         { "level": 2, "damage": 14, "cooldown": 360, "count": 1 },
         { "level": 3, "damage": 18, "cooldown": 320, "count": 2 },
@@ -30,6 +32,8 @@
       "spreadAngleDeg": 45,
       "color": 10980346,
       "size": 5,
+      "iconTextureKey": "skill-holy-arrow",
+      "projectileTextureKey": "skill-holy-arrow",
       "upgrades": [
         { "level": 2, "damage": 10, "count": 4, "spreadAngleDeg": 50 },
         { "level": 3, "damage": 13, "count": 5, "spreadAngleDeg": 55 },
@@ -48,6 +52,8 @@
       "baseRange": 250,
       "color": 3718648,
       "size": 7,
+      "iconTextureKey": "skill-ice-strike",
+      "projectileTextureKey": "skill-ice-strike",
       "upgrades": [
         { "level": 2, "damage": 8, "count": 10, "cooldown": 1300 },
         { "level": 3, "damage": 11, "count": 12, "cooldown": 1100 },
@@ -67,6 +73,8 @@
       "spiralSpeedDegPerSec": 180,
       "color": 16020150,
       "size": 5,
+      "iconTextureKey": "skill-lucky-seven",
+      "projectileTextureKey": "skill-lucky-seven",
       "upgrades": [
         { "level": 2, "damage": 9, "cooldown": 65, "count": 1 },
         { "level": 3, "damage": 12, "cooldown": 50, "count": 2 },

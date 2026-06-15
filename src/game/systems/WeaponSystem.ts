@@ -19,6 +19,8 @@ export interface WeaponDef {
   baseRange: number;
   color: number;
   size: number;
+  iconTextureKey?: string;
+  projectileTextureKey?: string;
   spreadAngleDeg?: number;
   spiralSpeedDegPerSec?: number;
   upgrades: WeaponUpgrade[];
@@ -149,7 +151,7 @@ export class WeaponSystem {
       const spreadOffset = stats.count > 1
         ? (i - (stats.count - 1) / 2) * Phaser.Math.DegToRad(8)
         : 0;
-      this.pool.fireColored(px, py, angle + spreadOffset, stats.speed, stats.range, stats.damage, stats.color, stats.size);
+      this.pool.fireColored(px, py, angle + spreadOffset, stats.speed, stats.range, stats.damage, stats.color, stats.size, stats.textureKey);
     }
   }
 
@@ -162,7 +164,7 @@ export class WeaponSystem {
     for (let i = 0; i < count; i++) {
       const t = count === 1 ? 0 : (i / (count - 1) - 0.5);
       const angle = baseAngle + t * spreadRad;
-      this.pool.fireColored(px, py, angle, stats.speed, stats.range, stats.damage, stats.color, stats.size);
+      this.pool.fireColored(px, py, angle, stats.speed, stats.range, stats.damage, stats.color, stats.size, stats.textureKey);
     }
   }
 
@@ -171,7 +173,7 @@ export class WeaponSystem {
     const count = stats.count;
     const step = (Math.PI * 2) / count;
     for (let i = 0; i < count; i++) {
-      this.pool.fireColored(px, py, step * i, stats.speed, stats.range, stats.damage, stats.color, stats.size);
+      this.pool.fireColored(px, py, step * i, stats.speed, stats.range, stats.damage, stats.color, stats.size, stats.textureKey);
     }
   }
 
@@ -183,7 +185,7 @@ export class WeaponSystem {
 
     for (let i = 0; i < stats.count; i++) {
       const angle = weapon.spiralAngle + (i * Math.PI * 2 / stats.count);
-      this.pool.fireColored(px, py, angle, stats.speed, stats.range, stats.damage, stats.color, stats.size);
+      this.pool.fireColored(px, py, angle, stats.speed, stats.range, stats.damage, stats.color, stats.size, stats.textureKey);
     }
   }
 
@@ -201,6 +203,7 @@ export class WeaponSystem {
       range: d.baseRange,
       color: d.color,
       size: d.size,
+      textureKey: d.projectileTextureKey,
       spreadAngle: u?.spreadAngleDeg ?? d.spreadAngleDeg,
     };
   }
@@ -218,5 +221,6 @@ interface ResolvedStats {
   range: number;
   color: number;
   size: number;
+  textureKey?: string;
   spreadAngle?: number;
 }

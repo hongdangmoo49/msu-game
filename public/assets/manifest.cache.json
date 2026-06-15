@@ -1,0 +1,660 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-15T00:00:00.000Z",
+  "source": "msu-cache",
+  "characters": [
+    {
+      "id": "character-roger",
+      "kind": "character",
+      "assetKey": "npc-2000",
+      "name": "Roger",
+      "job": "Maple Road Guide",
+      "level": 12,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Npc/0002000/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "npc",
+        "assetId": "2000",
+        "cdnUrl": "https://resource-static.msu.io/data/Npc/0002000.json"
+      }
+    },
+    {
+      "id": "character-sera",
+      "kind": "character",
+      "assetKey": "npc-2100",
+      "name": "Sera",
+      "job": "Beginner",
+      "level": 15,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Npc/0002100/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "npc",
+        "assetId": "2100",
+        "cdnUrl": "https://resource-static.msu.io/data/Npc/0002100.json"
+      }
+    },
+    {
+      "id": "character-athena-pierce",
+      "kind": "character",
+      "assetKey": "npc-10200",
+      "name": "Athena Pierce",
+      "job": "Archer Mentor",
+      "level": 30,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Npc/0010200/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "npc",
+        "assetId": "10200",
+        "cdnUrl": "https://resource-static.msu.io/data/Npc/0010200.json"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill-energy-bolt",
+      "kind": "skill",
+      "skillId": "2001008",
+      "name": "Energy Bolt",
+      "description": "Fire a condensed energy bolt that explodes on contact.",
+      "level": 20,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/200/skill/2001008/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-energy-bolt",
+        "tint": "#38bdf8",
+        "speed": 540,
+        "fireRateMs": 360,
+        "damage": 14
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "skill",
+        "assetId": "2001008",
+        "weaponId": "energy_bolt",
+        "cdnUrl": "https://resource-static.msu.io/data/Skill/200.json"
+      }
+    },
+    {
+      "id": "skill-holy-arrow",
+      "kind": "skill",
+      "skillId": "2301005",
+      "name": "Holy Arrow",
+      "description": "Attacks multiple monsters with holy arrows.",
+      "level": 20,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/230/skill/2301005/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-holy-arrow",
+        "tint": "#facc15",
+        "speed": 420,
+        "fireRateMs": 600,
+        "damage": 10
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "skill",
+        "assetId": "2301005",
+        "weaponId": "holy_spread",
+        "cdnUrl": "https://resource-static.msu.io/data/Skill/230.json"
+      }
+    },
+    {
+      "id": "skill-ice-strike",
+      "kind": "skill",
+      "skillId": "2211002",
+      "name": "Ice Strike",
+      "description": "Create an ice explosion near you.",
+      "level": 20,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/221/skill/2211002/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-ice-strike",
+        "tint": "#38bdf8",
+        "speed": 300,
+        "fireRateMs": 1500,
+        "damage": 12
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "skill",
+        "assetId": "2211002",
+        "weaponId": "ice_ring",
+        "cdnUrl": "https://resource-static.msu.io/data/Skill/221.json"
+      }
+    },
+    {
+      "id": "skill-lucky-seven",
+      "kind": "skill",
+      "skillId": "14001020",
+      "name": "Lucky Seven",
+      "description": "Throw lucky stars to attack enemies ahead.",
+      "level": 20,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/1400/skill/14001020/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-lucky-seven",
+        "tint": "#f472b6",
+        "speed": 350,
+        "fireRateMs": 80,
+        "damage": 9
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "skill",
+        "assetId": "14001020",
+        "weaponId": "dark_spiral",
+        "cdnUrl": "https://resource-static.msu.io/data/Skill/1400.json"
+      }
+    },
+    {
+      "id": "skill-thunder-bolt",
+      "kind": "skill",
+      "skillId": "2201005",
+      "name": "Thunder Bolt",
+      "description": "Call lightning bolts onto nearby enemies.",
+      "level": 20,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/220/skill/2201005/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-thunder-bolt",
+        "tint": "#60a5fa",
+        "speed": 460,
+        "fireRateMs": 520,
+        "damage": 16
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "skill",
+        "assetId": "2201005",
+        "cdnUrl": "https://resource-static.msu.io/data/Skill/220.json"
+      }
+    },
+    {
+      "id": "skill-arrow-blow",
+      "kind": "skill",
+      "skillId": "3001004",
+      "name": "Arrow Blow",
+      "description": "Shoot consecutive arrows at multiple enemies.",
+      "level": 20,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/300/skill/3001004/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "projectile": {
+        "textureKey": "skill-arrow-blow",
+        "tint": "#4ade80",
+        "speed": 500,
+        "fireRateMs": 480,
+        "damage": 11
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "skill",
+        "assetId": "3001004",
+        "cdnUrl": "https://resource-static.msu.io/data/Skill/300.json"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "item-red-potion",
+      "kind": "item",
+      "itemId": "2000000",
+      "name": "Red Potion",
+      "category": "consume",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Item/Consume/0200/02000000/info/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "consume",
+        "assetId": "2000000",
+        "cdnUrl": "https://resource-static.msu.io/data/Item/Consume/0200.json"
+      }
+    },
+    {
+      "id": "item-blue-potion",
+      "kind": "item",
+      "itemId": "2000003",
+      "name": "Blue Potion",
+      "category": "consume",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Item/Consume/0200/02000003/info/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "consume",
+        "assetId": "2000003",
+        "cdnUrl": "https://resource-static.msu.io/data/Item/Consume/0200.json"
+      }
+    },
+    {
+      "id": "item-power-elixir",
+      "kind": "item",
+      "itemId": "2000005",
+      "name": "Power Elixir",
+      "category": "consume",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Item/Consume/0200/02000005/info/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "consume",
+        "assetId": "2000005",
+        "cdnUrl": "https://resource-static.msu.io/data/Item/Consume/0200.json"
+      }
+    }
+  ],
+  "icons": [
+    {
+      "id": "icon-energy-bolt",
+      "label": "Energy Bolt",
+      "entityId": "skill-energy-bolt",
+      "entityKind": "skill",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/200/skill/2001008/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "assetId": "2001008"
+      }
+    },
+    {
+      "id": "icon-holy-arrow",
+      "label": "Holy Arrow",
+      "entityId": "skill-holy-arrow",
+      "entityKind": "skill",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/230/skill/2301005/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "assetId": "2301005"
+      }
+    },
+    {
+      "id": "icon-ice-strike",
+      "label": "Ice Strike",
+      "entityId": "skill-ice-strike",
+      "entityKind": "skill",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/221/skill/2211002/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "assetId": "2211002"
+      }
+    },
+    {
+      "id": "icon-lucky-seven",
+      "label": "Lucky Seven",
+      "entityId": "skill-lucky-seven",
+      "entityKind": "skill",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Skill/1400/skill/14001020/icon.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "assetId": "14001020"
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "enemy-snail",
+      "kind": "enemy",
+      "assetKey": "mob-100100",
+      "name": "Snail",
+      "role": "basic",
+      "level": 1,
+      "displaySize": 34,
+      "healthMultiplier": 0.9,
+      "speedMultiplier": 0.85,
+      "xpMultiplier": 0.8,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/0100100/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "100100",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/0100100.json"
+      }
+    },
+    {
+      "id": "enemy-blue-snail",
+      "kind": "enemy",
+      "assetKey": "mob-100101",
+      "name": "Blue Snail",
+      "role": "basic",
+      "level": 2,
+      "displaySize": 34,
+      "healthMultiplier": 1,
+      "speedMultiplier": 0.9,
+      "xpMultiplier": 1,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/0100101/move/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "100101",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/0100101.json"
+      }
+    },
+    {
+      "id": "enemy-slime",
+      "kind": "enemy",
+      "assetKey": "mob-210100",
+      "name": "Slime",
+      "role": "basic",
+      "level": 7,
+      "displaySize": 38,
+      "healthMultiplier": 1.15,
+      "speedMultiplier": 1,
+      "xpMultiplier": 1.1,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/0210100/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "210100",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/0210100.json"
+      }
+    },
+    {
+      "id": "enemy-orange-mushroom",
+      "kind": "enemy",
+      "assetKey": "mob-1210102",
+      "name": "Orange Mushroom",
+      "role": "basic",
+      "level": 10,
+      "displaySize": 40,
+      "healthMultiplier": 1.25,
+      "speedMultiplier": 1,
+      "xpMultiplier": 1.2,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/1210102/stand/1.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "1210102",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/1210102.json"
+      }
+    },
+    {
+      "id": "enemy-stump",
+      "kind": "enemy",
+      "assetKey": "mob-130100",
+      "name": "Stump",
+      "role": "elite",
+      "level": 20,
+      "displaySize": 42,
+      "healthMultiplier": 1.45,
+      "speedMultiplier": 0.95,
+      "xpMultiplier": 1.35,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/0130100/move/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "130100",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/0130100.json"
+      }
+    },
+    {
+      "id": "enemy-dark-stump",
+      "kind": "enemy",
+      "assetKey": "mob-1110101",
+      "name": "Dark Stump",
+      "role": "elite",
+      "level": 20,
+      "displaySize": 44,
+      "healthMultiplier": 1.55,
+      "speedMultiplier": 0.95,
+      "xpMultiplier": 1.45,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/1110101/move/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "1110101",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/1110101.json"
+      }
+    },
+    {
+      "id": "enemy-mano",
+      "kind": "enemy",
+      "assetKey": "mob-2220000",
+      "name": "Mano",
+      "role": "boss",
+      "level": 10,
+      "displaySize": 58,
+      "healthMultiplier": 3.5,
+      "speedMultiplier": 0.75,
+      "xpMultiplier": 4,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/2220000/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "2220000",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/2220000.json"
+      }
+    },
+    {
+      "id": "enemy-mushmom",
+      "kind": "enemy",
+      "assetKey": "mob-6130101",
+      "name": "Mushmom",
+      "role": "boss",
+      "level": 18,
+      "displaySize": 66,
+      "healthMultiplier": 4.2,
+      "speedMultiplier": 0.8,
+      "xpMultiplier": 5,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/6130101/move/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "6130101",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/6130101.json"
+      }
+    },
+    {
+      "id": "enemy-stumpy",
+      "kind": "enemy",
+      "assetKey": "mob-3220000",
+      "name": "Stumpy",
+      "role": "boss",
+      "level": 25,
+      "displaySize": 68,
+      "healthMultiplier": 4.5,
+      "speedMultiplier": 0.8,
+      "xpMultiplier": 5.5,
+      "image": {
+        "url": "https://resource-static.msu.io/data/Mob/3220000/stand/0.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "mob",
+        "assetId": "3220000",
+        "cdnUrl": "https://resource-static.msu.io/data/Mob/3220000.json"
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "background-snail-garden",
+      "kind": "background",
+      "assetKey": "map-30000",
+      "name": "Maple Road - Snail Garden",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Map/Map/Map0/000030000/miniMap/canvas.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "map",
+        "assetId": "30000",
+        "cdnUrl": "https://resource-static.msu.io/data/Map/Map/Map3/000030000.json"
+      }
+    },
+    {
+      "id": "background-dangerous-forest",
+      "kind": "background",
+      "assetKey": "map-50000",
+      "name": "Maple Road - Inside the Dangerous Forest",
+      "image": {
+        "url": "https://resource-static.msu.io/data/Map/Map/Map0/000050000/miniMap/canvas.png",
+        "sourceField": "resourceSearch.thumbnail",
+        "kind": "remote",
+        "isValidUrl": true,
+        "validationStatus": "valid"
+      },
+      "raw": {
+        "source": "MSU Resource Search",
+        "category": "map",
+        "assetId": "50000",
+        "cdnUrl": "https://resource-static.msu.io/data/Map/Map/Map5/000050000.json"
+      }
+    }
+  ],
+  "rawResponses": [
+    {
+      "id": "resource-search-candidates-2026-06-15",
+      "endpointId": "manual-resource-search",
+      "path": "resource-search.msu.io",
+      "receivedAt": "2026-06-15T00:00:00.000Z",
+      "body": {
+        "note": "Curated starter survival set from MSU Resource Search.",
+        "categories": ["npc", "mob", "skill", "consume", "map"]
+      }
+    }
+  ],
+  "metadata": {
+    "title": "MSU Survival Resource Search Starter Set",
+    "revision": "resource-search-starter-2026-06-15",
+    "warnings": []
+  }
+}

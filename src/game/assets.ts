@@ -15,6 +15,8 @@ const FALLBACK_COLORS = {
   skill: 0xa78bfa,
   item: 0xf59e0b,
   icon: 0x22c55e,
+  enemy: 0xef4444,
+  background: 0x1e293b,
 } as const;
 
 const MANIFEST_URL = '/api/manifest';
@@ -33,6 +35,8 @@ export const CORE_TEXTURE_KEYS = {
   fallbackSkill: 'fallback_skill',
   fallbackItem: 'fallback_item',
   fallbackIcon: 'fallback_icon',
+  fallbackEnemy: 'fallback_enemy',
+  fallbackBackground: 'fallback_background',
 } as const;
 
 /* ---------- public types ---------- */
@@ -307,6 +311,8 @@ export function ensureCoreFallbackTextures(scene: Phaser.Scene): void {
   generateFallbackTexture(scene, CORE_TEXTURE_KEYS.fallbackSkill, FALLBACK_COLORS.skill);
   generateFallbackTexture(scene, CORE_TEXTURE_KEYS.fallbackItem, FALLBACK_COLORS.item);
   generateFallbackTexture(scene, CORE_TEXTURE_KEYS.fallbackIcon, FALLBACK_COLORS.icon);
+  generateFallbackTexture(scene, CORE_TEXTURE_KEYS.fallbackEnemy, FALLBACK_COLORS.enemy);
+  generateFallbackTexture(scene, CORE_TEXTURE_KEYS.fallbackBackground, FALLBACK_COLORS.background);
 }
 
 export function resolveTextureKey(
@@ -376,6 +382,12 @@ function buildEntries(manifest: MsuGameManifest): readonly EntityImageEntry[] {
   for (const ic of manifest.icons) {
     add({ id: ic.id, kind: 'icon', name: ic.label });
   }
+  for (const enemy of manifest.enemies ?? []) {
+    add({ id: enemy.id, kind: 'enemy', name: enemy.name });
+  }
+  for (const background of manifest.backgrounds ?? []) {
+    add({ id: background.id, kind: 'background', name: background.name });
+  }
 
   return [...byId.values()];
 }
@@ -386,6 +398,8 @@ function findEntity(manifest: MsuGameManifest, id: string): ImageEntity | null {
     ...manifest.skills,
     ...manifest.items,
     ...manifest.icons,
+    ...(manifest.enemies ?? []),
+    ...(manifest.backgrounds ?? []),
   ];
   return all.find((e) => e.id === id) ?? null;
 }

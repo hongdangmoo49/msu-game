@@ -2,8 +2,7 @@ import Phaser from 'phaser';
 
 /**
  * Generic pooled projectile.
- * Supports per-fire overrides for damage, speed, range, color tint, and size.
- * Texture is generated once (white circle) and tinted at fire-time.
+ * Supports per-fire overrides for damage, speed, range, color tint, size, and texture.
  */
 export class Projectile extends Phaser.Physics.Arcade.Image {
   private startX = 0;
@@ -12,7 +11,6 @@ export class Projectile extends Phaser.Physics.Arcade.Image {
   private damageValue = 10;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
-    // 'projectile' is the shared white-circle texture
     super(scene, x, y, 'projectile');
     scene.add.existing(this);
     scene.physics.add.existing(this);
@@ -21,21 +19,42 @@ export class Projectile extends Phaser.Physics.Arcade.Image {
 
   /* ---------- lifecycle ---------- */
 
-  fire(x: number, y: number, angle: number, speed: number, range: number, damage: number, color: number, size: number): void {
+  fire(
+    x: number,
+    y: number,
+    angle: number,
+    speed: number,
+    range: number,
+    damage: number,
+    color: number,
+    size: number,
+    textureKey?: string,
+  ): void {
     this.startX = x;
     this.startY = y;
     this.maxRange = range;
     this.damageValue = damage;
 
-    this.setTint(color);
-    this.setDisplaySize(size, size);
+    const hasCustomTexture =
+      textureKey !== undefined &&
+      textureKey !== 'projectile' &&
+      this.scene.textures.exists(textureKey);
+    const visualSize = hasCustomTexture ? Math.max(18, size * 2.6) : size;
+
+    this.setTexture(hasCustomTexture ? textureKey : 'projectile');
+    if (hasCustomTexture) {
+      this.clearTint();
+    } else {
+      this.setTint(color);
+    }
+    this.setDisplaySize(visualSize, visualSize);
 
     const body = this.body as Phaser.Physics.Arcade.Body;
     body.enable = true;
     body.reset(x, y);
     // resize physics body to match display size
-    const halfSize = size / 2;
-    body.setCircle(halfSize, -halfSize + size / 2, -halfSize + size / 2);
+    const halfSize = Math.max(6, size / 2);
+    body.setCircle(halfSize, -halfSize + visualSize / 2, -halfSize + visualSize / 2);
     body.setVelocity(
       Math.cos(angle) * speed,
       Math.sin(angle) * speed,
@@ -49,6 +68,7 @@ export class Projectile extends Phaser.Physics.Arcade.Image {
     body.enable = false;
     this.setActive(false).setVisible(false);
     this.clearTint();
+    this.setTexture('projectile');
   }
 
   /** Called by group with `runChildUpdate: true`. */

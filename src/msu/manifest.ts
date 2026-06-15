@@ -3,7 +3,8 @@ import type { UnknownRecord } from './types';
 export const MSU_GAME_MANIFEST_SCHEMA_VERSION = 1;
 
 export type MsuGameManifestSource = 'msu-cache' | 'msu-proxy' | 'fallback';
-export type MsuGameManifestEntityKind = 'character' | 'skill' | 'item';
+export type MsuGameManifestEntityKind = 'character' | 'skill' | 'item' | 'enemy';
+export type MsuGameEnemyRole = 'basic' | 'elite' | 'boss';
 export type ManifestImageKind = 'remote' | 'inline' | 'local' | 'missing';
 export type ManifestImageValidationStatus =
   | 'valid'
@@ -64,6 +65,30 @@ export interface MsuGameItem {
   readonly raw: UnknownRecord;
 }
 
+export interface MsuGameEnemy {
+  readonly id: string;
+  readonly kind: 'enemy';
+  readonly assetKey?: string;
+  readonly name: string;
+  readonly role?: MsuGameEnemyRole;
+  readonly level?: number;
+  readonly displaySize?: number;
+  readonly healthMultiplier?: number;
+  readonly speedMultiplier?: number;
+  readonly xpMultiplier?: number;
+  readonly image: ManifestImageRef;
+  readonly raw: UnknownRecord;
+}
+
+export interface MsuGameBackground {
+  readonly id: string;
+  readonly kind: 'background';
+  readonly assetKey?: string;
+  readonly name: string;
+  readonly image: ManifestImageRef;
+  readonly raw: UnknownRecord;
+}
+
 export interface MsuGameIcon {
   readonly id: string;
   readonly label: string;
@@ -95,6 +120,8 @@ export interface MsuGameManifest {
   readonly skills: readonly MsuGameSkill[];
   readonly items: readonly MsuGameItem[];
   readonly icons: readonly MsuGameIcon[];
+  readonly enemies?: readonly MsuGameEnemy[];
+  readonly backgrounds?: readonly MsuGameBackground[];
   readonly rawResponses: readonly MsuManifestRawResponse[];
   readonly metadata: MsuGameManifestMetadata;
 }
@@ -212,6 +239,31 @@ const isManifestItem = (value: unknown): value is MsuGameItem =>
   isManifestImageRef(value.image) &&
   hasRawRecord(value);
 
+const isOptionalNumber = (value: unknown): boolean =>
+  value === undefined || (typeof value === 'number' && Number.isFinite(value));
+
+const isManifestEnemy = (value: unknown): value is MsuGameEnemy =>
+  isRecord(value) &&
+  value.kind === 'enemy' &&
+  typeof value.id === 'string' &&
+  typeof value.name === 'string' &&
+  (value.role === undefined || value.role === 'basic' || value.role === 'elite' || value.role === 'boss') &&
+  isOptionalNumber(value.level) &&
+  isOptionalNumber(value.displaySize) &&
+  isOptionalNumber(value.healthMultiplier) &&
+  isOptionalNumber(value.speedMultiplier) &&
+  isOptionalNumber(value.xpMultiplier) &&
+  isManifestImageRef(value.image) &&
+  hasRawRecord(value);
+
+const isManifestBackground = (value: unknown): value is MsuGameBackground =>
+  isRecord(value) &&
+  value.kind === 'background' &&
+  typeof value.id === 'string' &&
+  typeof value.name === 'string' &&
+  isManifestImageRef(value.image) &&
+  hasRawRecord(value);
+
 const isManifestIcon = (value: unknown): value is MsuGameIcon =>
   isRecord(value) &&
   typeof value.id === 'string' &&
@@ -235,6 +287,8 @@ export const isGameManifest = (value: unknown): value is MsuGameManifest =>
   value.items.every(isManifestItem) &&
   Array.isArray(value.icons) &&
   value.icons.every(isManifestIcon) &&
+  (value.enemies === undefined || (Array.isArray(value.enemies) && value.enemies.every(isManifestEnemy))) &&
+  (value.backgrounds === undefined || (Array.isArray(value.backgrounds) && value.backgrounds.every(isManifestBackground))) &&
   Array.isArray(value.rawResponses) &&
   value.rawResponses.every(isRawResponse) &&
   isRecord(value.metadata) &&
@@ -247,4 +301,6 @@ export const hasManifestReferences = (manifest: MsuGameManifest): boolean =>
   manifest.characters.length > 0 ||
   manifest.skills.length > 0 ||
   manifest.items.length > 0 ||
-  manifest.icons.length > 0;
+  manifest.icons.length > 0 ||
+  (manifest.enemies?.length ?? 0) > 0 ||
+  (manifest.backgrounds?.length ?? 0) > 0;

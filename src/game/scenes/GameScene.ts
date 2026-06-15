@@ -5,11 +5,12 @@ import { Enemy } from '../entities/Enemy';
 import { XpOrb } from '../entities/XpOrb';
 import { ProjectilePool } from '../systems/ProjectilePool';
 import { XpOrbPool } from '../systems/XpOrbPool';
-import { EnemySpawner } from '../systems/EnemySpawner';
+import { EnemySpawner, type EnemySpawnAsset } from '../systems/EnemySpawner';
 import { CollisionSystem, GameEvents } from '../systems/CollisionSystem';
 import { WeaponSystem, WeaponDef, PassiveDef } from '../systems/WeaponSystem';
 import { LevelUpPanel, LevelUpChoice, WeaponChoice, PassiveChoice } from '../ui/LevelUpPanel';
 import { CORE_TEXTURE_KEYS, resolveTextureKey, type MatchStartData } from '../assets';
+import type { MsuGameManifest } from '../../msu/manifest';
 import { PerfOverlay } from '../debug/PerfOverlay';
 import WEAPON_DATA from '../data/weapons.json';
 
@@ -64,6 +65,7 @@ export class GameScene extends Phaser.Scene {
 
     this.generateTextures();
     this.physics.world.setBounds(0, 0, CONFIG.WORLD.WIDTH, CONFIG.WORLD.HEIGHT);
+    this.drawBackground();
 
     // --- entities ---
     this.player = new Player(this, CONFIG.WORLD.WIDTH / 2, CONFIG.WORLD.HEIGHT / 2);
@@ -78,7 +80,7 @@ export class GameScene extends Phaser.Scene {
     const starter = ALL_WEAPONS.find(w => w.id === 'energy_bolt')!;
     this.weaponSystem.addWeapon(starter);
 
-    this.spawner = new EnemySpawner(this, this.enemyGroup);
+    this.spawner = new EnemySpawner(this, this.enemyGroup, resolveEnemySpawnAssets(this, this.startData?.manifest));
     new CollisionSystem(this, this.player, this.projectilePool, this.xpOrbPool, this.enemyGroup);
     this.levelUpPanel = new LevelUpPanel(this);
     this.perfOverlay = new PerfOverlay(this, {
@@ -236,6 +238,27 @@ export class GameScene extends Phaser.Scene {
     circleTexture(this, 'xp_orb', CONFIG.XP_ORB.SIZE, CONFIG.XP_ORB.COLOR);
   }
 
+  private drawBackground(): void {
+    const background = this.startData?.manifest.backgrounds?.find((candidate) =>
+      this.textures.exists(candidate.id),
+    );
+
+    this.cameras.main.setBackgroundColor(CONFIG.WORLD.BG_COLOR);
+
+    if (background === undefined) {
+      return;
+    }
+
+    this.add
+      .image(CONFIG.WORLD.WIDTH / 2, CONFIG.WORLD.HEIGHT / 2, background.id)
+      .setDisplaySize(CONFIG.WORLD.WIDTH, CONFIG.WORLD.HEIGHT)
+      .setAlpha(0.48)
+      .setDepth(-100);
+    this.add
+      .rectangle(CONFIG.WORLD.WIDTH / 2, CONFIG.WORLD.HEIGHT / 2, CONFIG.WORLD.WIDTH, CONFIG.WORLD.HEIGHT, 0x020617, 0.38)
+      .setDepth(-90);
+  }
+
   /* ================================================
      HELPERS
      ================================================ */
@@ -375,4 +398,28 @@ function isMatchStartData(value: unknown): value is MatchStartData {
     typeof candidate.loadState === 'object' &&
     candidate.loadState !== null
   );
+}
+
+function resolveEnemySpawnAssets(
+  scene: Phaser.Scene,
+  manifest: MsuGameManifest | undefined,
+): readonly EnemySpawnAsset[] {
+  const enemies = manifest?.enemies ?? [];
+
+  return enemies
+    .filter((enemy) => scene.textures.exists(enemy.id))
+    .map((enemy) => ({
+      textureKey: enemy.id,
+      name: enemy.name,
+      role: enemy.role ?? 'basic',
+      displaySize: clampNumber(enemy.displaySize, CONFIG.ENEMY.SIZE, 24, 92),
+      healthMultiplier: clampNumber(enemy.healthMultiplier, 1, 0.2, 8),
+      speedMultiplier: clampNumber(enemy.speedMultiplier, 1, 0.2, 3),
+      xpMultiplier: clampNumber(enemy.xpMultiplier, 1, 0.1, 10),
+    }));
+}
+
+function clampNumber(value: number | undefined, fallback: number, min: number, max: number): number {
+  if (value === undefined || !Number.isFinite(value)) return fallback;
+  return Phaser.Math.Clamp(value, min, max);
 }

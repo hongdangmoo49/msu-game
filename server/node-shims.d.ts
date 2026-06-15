@@ -23,7 +23,7 @@ declare module 'node:http' {
   };
 
   export type ServerResponse = {
-    end: (data?: string) => void;
+    end: (data?: string | Uint8Array) => void;
     writeHead: (statusCode: number, headers?: Record<string, string>) => void;
   };
 

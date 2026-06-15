@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { handleManifestRoute, isManifestRoute } from './routes/manifest';
 import { handleMsuRoute } from './routes/msu';
+import { handleResourceImageRoute, isResourceImageRoute } from './routes/resourceImage';
 
 const port = Number(process.env.PORT ?? 3000);
 const __filename = fileURLToPath(import.meta.url);
@@ -58,6 +59,11 @@ const handleRequest = async (
 
   if (isManifestRoute(requestUrl.pathname)) {
     await handleManifestRoute(request, response);
+    return;
+  }
+
+  if (isResourceImageRoute(requestUrl.pathname)) {
+    await handleResourceImageRoute(request, response, requestUrl);
     return;
   }
 

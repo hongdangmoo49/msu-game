@@ -119,9 +119,15 @@ export class LevelUpPanel {
     let yOffset = -CARD_H / 2 + 24;
 
     if (choice.kind === 'weapon') {
-      const dotSize = 20;
-      const dot = this.scene.add.circle(x, y + yOffset, dotSize / 2, choice.def.color);
-      this.container.add(dot);
+      const iconKey = choice.def.iconTextureKey;
+      if (iconKey !== undefined && this.scene.textures.exists(iconKey)) {
+        const icon = this.scene.add.image(x, y + yOffset, iconKey).setDisplaySize(28, 28);
+        this.container.add(icon);
+      } else {
+        const dotSize = 20;
+        const dot = this.scene.add.circle(x, y + yOffset, dotSize / 2, choice.def.color);
+        this.container.add(dot);
+      }
     } else {
       const icon = this.scene.add.text(x, y + yOffset, choice.def.icon, {
         fontSize: '22px',

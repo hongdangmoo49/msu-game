@@ -5,10 +5,12 @@ import fallbackManifestJson from '../../public/assets/manifest.fallback.json';
 import {
   hasManifestReferences,
   isGameManifest,
+  type ManifestImageRef,
   type MsuGameManifest,
   type MsuGameManifestSource
 } from '../../src/msu/manifest';
 import { normalizeMsuManifest } from '../../src/msu/normalize';
+import { isProxyableResourceImageUrl, proxyResourceImageUrl } from './resourceImage';
 
 export const manifestRoutePath = '/api/manifest';
 
@@ -138,6 +140,46 @@ const loadRawManifest = (): MsuGameManifest | null => {
 const fallbackManifest = (): MsuGameManifest =>
   ensureUsableManifest(fallbackManifestJson, 'fallback', 'fallback');
 
+const proxyImageRef = (image: ManifestImageRef): ManifestImageRef => {
+  if (image.url === null || !isProxyableResourceImageUrl(image.url)) {
+    return image;
+  }
+
+  return {
+    ...image,
+    url: proxyResourceImageUrl(image.url),
+    kind: 'local'
+  };
+};
+
+const withLocalResourceImageProxy = (manifest: MsuGameManifest): MsuGameManifest => ({
+  ...manifest,
+  characters: manifest.characters.map((character) => ({
+    ...character,
+    image: proxyImageRef(character.image)
+  })),
+  skills: manifest.skills.map((skill) => ({
+    ...skill,
+    image: proxyImageRef(skill.image)
+  })),
+  items: manifest.items.map((item) => ({
+    ...item,
+    image: proxyImageRef(item.image)
+  })),
+  icons: manifest.icons.map((icon) => ({
+    ...icon,
+    image: proxyImageRef(icon.image)
+  })),
+  enemies: manifest.enemies?.map((enemy) => ({
+    ...enemy,
+    image: proxyImageRef(enemy.image)
+  })),
+  backgrounds: manifest.backgrounds?.map((background) => ({
+    ...background,
+    image: proxyImageRef(background.image)
+  })),
+});
+
 const resolveManifest = async (): Promise<ResolvedManifest> => {
   try {
     const proxyManifest = await loadProxyManifest();
@@ -200,6 +242,7 @@ export const handleManifestRoute = async (
   }
 
   const resolved = await resolveManifest();
+  const manifest = withLocalResourceImageProxy(resolved.manifest);
 
   response.writeHead(200, {
     'cache-control': resolved.source === 'fallback' ? 'no-store' : 'public, max-age=60',
@@ -207,5 +250,5 @@ export const handleManifestRoute = async (
     'x-msu-manifest-source': resolved.source,
     'x-msu-manifest-fallback': String(resolved.source === 'fallback')
   });
-  response.end(method === 'HEAD' ? undefined : json(resolved.manifest));
+  response.end(method === 'HEAD' ? undefined : json(manifest));
 };

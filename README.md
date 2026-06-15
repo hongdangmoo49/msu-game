@@ -19,6 +19,7 @@ The project is designed so the game can run even when the MSU network is unavail
 - Object pools for projectiles, enemies, and XP orbs
 - Offline-friendly fallback manifest and inline fallback assets
 - Server-side MSU API proxy so API keys never ship to the browser
+- Curated MSU Resource Search starter set for characters, monsters, skills, items, and map art
 - Acceptance checks for security, fallback behavior, and performance budget
 
 ## Gameplay
@@ -84,6 +85,8 @@ All MSU credentials stay server-side.
 
 If no live or cached manifest is available, the game still boots with the bundled fallback manifest at `public/assets/manifest.fallback.json`.
 
+The default curated asset set lives at `public/assets/manifest.cache.json`. Image URLs from `resource-static.msu.io` are served through the restricted `/api/resource-image` route so browser CORS rules do not block Phaser texture loading.
+
 ## Scripts
 
 | Command | Description |
@@ -128,5 +131,6 @@ It checks that:
 ## Notes
 
 - The client fetches only `/api/manifest`; direct MSU calls are handled by the server.
+- MSU Resource Search images are proxied only from `https://resource-static.msu.io/data/`.
 - Build output and dependencies are intentionally ignored by git.
 - More implementation details live in `docs/acceptance-checklist.md` and `docs/msu-api-notes.md`.

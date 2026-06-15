@@ -24,10 +24,11 @@ export class ProjectilePool {
     x: number, y: number, angle: number,
     speed: number, range: number, damage: number,
     color: number, size: number,
+    textureKey?: string,
   ): Projectile | null {
     const proj = this.group.get(x, y) as Projectile | null;
     if (!proj) return null;
-    proj.fire(x, y, angle, speed, range, damage, color, size);
+    proj.fire(x, y, angle, speed, range, damage, color, size, textureKey);
     return proj;
   }
 }

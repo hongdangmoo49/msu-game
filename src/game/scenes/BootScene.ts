@@ -32,7 +32,15 @@ export class BootScene extends Phaser.Scene {
     const manifest = result.manifest;
     const imageFailures: string[] = [];
 
-    this.setStatus('Loading images', `${manifest.characters.length} characters, ${manifest.icons.length} icons`);
+    this.setStatus(
+      'Loading images',
+      [
+        `${manifest.characters.length} characters`,
+        `${manifest.enemies?.length ?? 0} enemies`,
+        `${manifest.skills.length} skills`,
+        `${manifest.backgrounds?.length ?? 0} backgrounds`,
+      ].join(', '),
+    );
 
     const queue = queueManifestImages(this, manifest);
     const removeFallbackHandler = installManifestImageFallbacks(this, queue.entityMap, (key) => {
